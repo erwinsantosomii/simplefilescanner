@@ -59,6 +59,10 @@ public class FolderScannerService implements Runnable {
 
         Map<WatchKey, Path> keys = new HashMap<>();
         String[] arrayPathFolder = folderPath.split(",");
+        File file = new File(folderPath);
+        if(!file.exists()) {
+            file.mkdir();
+        }
         if (arrayPathFolder.length > 0) {
             for (String pathFolder : arrayPathFolder) {
                 Path registerPath = Paths.get(pathFolder);
