@@ -30,7 +30,7 @@ import org.springframework.stereotype.Service;
 
 /**
  *
- * @author vinch
+ * @author erwinsn
  */
 @Service
 public class FolderScannerService implements Runnable {
@@ -107,7 +107,6 @@ public class FolderScannerService implements Runnable {
                         int totalRecord = 0;
                         try {
                             inputStream = new FileInputStream(f);
-                            StringBuilder resultStringBuilder = new StringBuilder();
                             try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
                                 String line;
                                 while ((line = br.readLine()) != null) {
@@ -120,7 +119,8 @@ public class FolderScannerService implements Runnable {
                                         content.setField4(splitted[3]);
                                         content.setField5(splitted[4]);
                                         content.setField6(splitted[5]);
-                                    } catch(ArrayIndexOutOfBoundsException ex) {
+                                    } catch (ArrayIndexOutOfBoundsException ex) {
+                                        logger.info(ex.getMessage());
                                         content.setField6(splitted[splitted.length - 1]);
                                         break;
                                     }
@@ -140,6 +140,7 @@ public class FolderScannerService implements Runnable {
                             }
                             masterFile.setTotalRecord(totalRecord);
                             masterFileRepository.save(masterFile);
+                            logger.info("File : " + pathFile.toString() + ", with " + totalRecord + " row are successfully processed and inserted to DB");
                         }
 
                     }

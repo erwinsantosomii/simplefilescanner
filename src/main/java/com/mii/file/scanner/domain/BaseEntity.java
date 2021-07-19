@@ -10,7 +10,7 @@ import javax.persistence.MappedSuperclass;
 
 /**
  *
- * @author vinch
+ * @author erwinsn
  */
 @MappedSuperclass
 public class BaseEntity implements Serializable {

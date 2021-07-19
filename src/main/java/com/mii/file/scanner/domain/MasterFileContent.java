@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author vinch
+ * @author erwinsn
  */
 @Table
 @Entity

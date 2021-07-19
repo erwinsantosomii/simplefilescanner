@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author vinch
+ * @author erwinsn
  */
 @Repository
 public interface MasterFileContentRepository extends JpaRepository<MasterFileContent, Long> {
